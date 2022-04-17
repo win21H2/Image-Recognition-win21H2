@@ -1,16 +1,23 @@
 # Image Recognition
 
-This repo has code from Jupyter Labs and I have used an Nvidia Jetson nano in combination with a USB camera to run image recognition so that when the system recognizes for example a red triangle, it will send a serial command to an Arudino which is also hooked up to the Jetson Nano. 
+>NOTE - THE SOFTWARE IS PROVIDED "<ins>AS IS</ins>", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN <ins>NO</ins> EVENT SHALL THE AUTHORS (WIN21H2, 324HZ) OR COPYRIGHT HOLDERS (WIN21H2, 324HZ) BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Description: This repository will take you through first setting up Jupyter Labs on a Nvidia Jetson Nano, followed by testing if your camera is working. It will then end off with running the image recognition program which will allow you to interface with a Arduino Uno and send serial commands which you can use for your own project
+
+### Chapters
+>1 - [Prerequisites](#prerequisites)<br>
+>2 - [What you need to have on-hand](#what-you-need-to-have-on-hand)<br>
+>3 - [Getting started](#getting-started)<br>
 
 # Prerequisites
  
  > - Basic understanding of the Ubuntu CLI and how to enter commands/open files and navigate paths as well as sudo commands <br>
- > - Basic understanding of how to use Arduino and how to upload code to the board
+ > - Basic understanding of how to use Arduino and how to upload code
 # What you need to have on-hand
  > - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
  > - A USB camera (I used the [Logitech C920x HD Webcam](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) although you can use any other USB camera)
  > - A microSD card (you can get one [here](https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS/ref=sr_1_6?crid=38NYM8JJMSNRA&keywords=micro%2Bsd%2Bcard&qid=1650155732&sprefix=micro%2Bsd%2Bcard%2Caps%2C255&sr=8-6&th=1) one although I would reccomend getting one that is 64gb)
- > - An Arduino Uno (you can get one [here](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_3?crid=FFOODKO122K8&keywords=Arduino+uno&qid=1650155910&sprefix=arduino+u%2Caps%2C457&sr=8-3) or if you want to get one from the official store get it from [here](https://store.arduino.cc/products/arduino-uno-rev3))
+ > - A Arduino Uno (you can get one [here](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_3?crid=FFOODKO122K8&keywords=Arduino+uno&qid=1650155910&sprefix=arduino+u%2Caps%2C457&sr=8-3) or if you want to get one from the official store get it from [here](https://store.arduino.cc/products/arduino-uno-rev3))
 
 # Getting started
 ### Setting up the Jetson Nano
