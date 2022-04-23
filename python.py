@@ -187,6 +187,8 @@ def start_live(change):
         execute_thread.start()
         
 def getdata(b):
+    # Will upload later some changes to the code because as of now if you run this program, the LEDs on the Arduino Uno just flash instead of staying on. i will 
+    # also make changes to the Arduino file
     if prediction_score > 0.7 and prediction_string == 'green':
         print("GREEN")
         with serial.Serial('/dev/ttyACM0', 11520, timeout=10) as ser:
