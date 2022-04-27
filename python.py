@@ -169,6 +169,7 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
     global dataset
     global prediction_string
     global prediction_score
+    ser = serial.Serial('/dev/ttyACM0', 11520, timeout=10) # Added the serial connection code here because we want it to run once not multiple times in the if statement
     while state_widget.value == 'live':
         image = camera.value
         preprocessed = preprocess(image)
@@ -178,6 +179,19 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         prediction_widget.value = dataset.categories[category_index]
         prediction_string = dataset.categories[category_index]
         prediction_score = list(output)[category_index]
+        # Started testing here the code which will make the LED stay on for a set time before it turns off. 
+        
+        # What happens is while the camera feed is "live", any code in the if statement is run repeated and when it reaches the code below, it compares if
+        # the prediction score is greater than 0.7 and the attached string is "red", it will run the code below it and continue on with the last "for" statement.
+        
+        # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface 
+        # the arduino so the red LED stays on for a set time after seeing the red triangle
+        
+        if prediction_score > 0.7 and prediction_string == 'red':
+            print("RED")
+            time.sleep(2)
+            ser.write(bytes('RED\n','utf-8')) 
+            
         for i, score in enumerate(list(output)):
             score_widgets[i].value = score    
             
@@ -186,9 +200,7 @@ def start_live(change):
         execute_thread = threading.Thread(target=live, args=(state_widget, model, camera, prediction_widget, score_widget))
         execute_thread.start()
         
-def getdata(b):
-    # Will upload later some changes to the code because as of now if you run this program, the LEDs on the Arduino Uno just flash instead of staying on. i will 
-    # also make changes to the Arduino file
+def getdata(b = None):
     if prediction_score > 0.7 and prediction_string == 'green':
         print("GREEN")
         with serial.Serial('/dev/ttyACM0', 11520, timeout=10) as ser:
@@ -201,11 +213,8 @@ def getdata(b):
             time.sleep(2)
             ser.write(bytes('BLUE\n','utf-8'))
             
-    if prediction_score > 0.7 and prediction_string == 'red':
-        print("RED")
-        with serial.Serial('/dev/ttyACM0', 11520, timeout=10) as ser:
-            time.sleep(2)
-            ser.write(bytes('RED\n','utf-8'))       
+            # Removed the red LED code from here to prevent conflicts
+               
               
 output_widget.on_click(getdata)       
 state_widget.observe(start_live, names='value')
