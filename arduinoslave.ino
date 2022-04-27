@@ -50,26 +50,23 @@ void loop() {
   if (Serial.available() > 0) { // checks if serial is available and if the data is more than 0
     int size = Serial.readBytesUntil('\n', buffer, 12);
     
-    if (buffer[0] == 'G') { // this is statment checks if the first letter of the data is "G" and if so, run the code below which turns the green LED on
-      digitalWrite(gled, HIGH);
-    }
-    else { // if there is no output, keep the LED off (this might not be needed)
-      digitalWrite(gled, LOW);
-    }
+    // as of now, we are trying to delay it so once it gets the data from the Jetson, it waits 3000 miliseconds and then runs the digitalWrite LOW line
     
-    if (buffer[0] == 'B') { // this is statment checks if the first letter of the data is "B" and if so, run the code below which turns the blue LED on
+    // the reason why this might happen is because when the Jetson gets the score, it sends it ever 2 seconds which means it will be blinking anyways
+    // because its constantly getting new data before it has the time to turn off the LED although that does not explain the time when the LED turns off
+    
+    if (buffer[0] == 'G') {
+      digitalWrite(gled, HIGH);
+      delay(3000);
+      digitalWrite(gled, LOW); 
+    }
+    if (buffer[0] == 'B') {
       digitalWrite(bled, HIGH);
+      delay(3000);
+      digitalWrite(bled, LOW); 
     }
-    else { // if there is no output, keep the LED off (this might not be needed)
-      digitalWrite(bled, LOW);
-    }
-
     if (buffer[0] == 'R') {
       digitalWrite(rled, HIGH);
-      // as of now, we are trying to delay it so once it gets the data from the Jetson, it waits 3000 miliseconds and then runs the digitalWrite LOW line
-      
-      // the reason why this might happen is because when the Jetson gets the score, it sends it ever 2 seconds which means it will be blinking anyways
-      // because its constantly getting new data before it has the time to turn off the LED although that does not explain the time when the LED turns off
       delay(3000);
       digitalWrite(rled, LOW); 
     }
