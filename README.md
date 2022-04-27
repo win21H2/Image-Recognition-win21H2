@@ -1,23 +1,23 @@
 # Image Recognition
 
 >Copyright (c) 2022 324Hz
+##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code snapshots
 
-
-Description: This repository will take you through first setting up Jupyter Labs on a Nvidia Jetson Nano, followed by testing if your camera is working. It will then end off with running the image recognition program which will allow you to interface with a Arduino Uno and send serial commands which you can use for your own project
+Description: During this repository, I will take you through how to setup the Jetson Nano with Jupyter Labs, test if your camera is working by running an example camera file, test the unedited version of the image recognition program, and finnaly end off with making changes to the image recognition program and include an Arduino board.
 
 ### Chapters
 >1 - [Prerequisites](#prerequisites)<br>
 >2 - [What you need to have on-hand](#what-you-need-to-have-on-hand)<br>
 >3 - [Getting started](#getting-started)<br>
->4 - Running the default image recognition program
->5 - Making edits to the program
->6 - Including the Arduino board
->7 - Wrap up/conclusion
+>4 - Running the default image recognition program<br>
+>5 - Making edits to the program<br>
+>6 - Including the Arduino board<br>
+>7 - Wrap up/conclusion<br>
 
 # Prerequisites
  
- > - Basic understanding of the Ubuntu CLI and how to enter commands/open files and navigate paths as well as sudo commands <br>
- > - Basic understanding of how to use Arduino and how to upload code
+ > - Basic understanding of the Ubuntu/Linux CLI and how to enter commands/open files and navigate paths as well as sudo, pip, and sh commands <br>
+ > - Understanding of how to use the Arduino IDE and how to upload code
 # What you need to have on-hand
  > - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
  > - A USB camera (I used the [Logitech C920x HD Webcam](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) although you can use any other USB camera)
