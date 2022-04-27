@@ -36,6 +36,15 @@ void setup() {
     ;
   }
 }
+
+// We are trying now to see if we can get a void function to run which keeps the LED on after a set time. For now any changes made here will not affect the
+// blinking we are already getting from the Arduino.
+ 
+void ledoff(int lednum) {
+  delay(3000);
+  digitalWrite(lednum, LOW);
+}
+
 void loop() {
   char buffer[16];
   if (Serial.available() > 0) { // checks if serial is available and if the data is more than 0
@@ -55,11 +64,14 @@ void loop() {
       digitalWrite(bled, LOW);
     }
 
-    if (buffer[0] == 'R') { // this is statment checks if the first letter of the data is "R" and if so, run the code below which turns the red LED on
+    if (buffer[0] == 'R') {
       digitalWrite(rled, HIGH);
-    }
-    else { // if there is no output, keep the LED off (this might not be needed)
-      digitalWrite(rled, LOW);
+      // as of now, we are trying to delay it so once it gets the data from the Jetson, it waits 3000 miliseconds and then runs the digitalWrite LOW line
+      
+      // the reason why this might happen is because when the Jetson gets the score, it sends it ever 2 seconds which means it will be blinking anyways
+      // because its constantly getting new data before it has the time to turn off the LED although that does not explain the time when the LED turns off
+      delay(3000);
+      digitalWrite(rled, LOW); 
     }
     
   }
