@@ -187,10 +187,21 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface 
         # the arduino so the red LED stays on for a set time after seeing the red triangle
         
+        if prediction_score > 0.7 and prediction_string == 'green':
+            print("GREEN")
+            time.sleep(2)
+            ser.write(bytes('GREEN\n','utf-8')) 
+            
+        if prediction_score > 0.7 and prediction_string == 'blue':
+            print("BLUE")
+            time.sleep(2)
+            ser.write(bytes('BLUE\n','utf-8'))
+            
         if prediction_score > 0.7 and prediction_string == 'red':
             print("RED")
             time.sleep(2)
-            ser.write(bytes('RED\n','utf-8')) 
+            ser.write(bytes('RED\n','utf-8'))
+            
             
         for i, score in enumerate(list(output)):
             score_widgets[i].value = score    
@@ -203,18 +214,18 @@ def start_live(change):
 def getdata(b = None):
     if prediction_score > 0.7 and prediction_string == 'green':
         print("GREEN")
-        with serial.Serial('/dev/ttyACM0', 11520, timeout=10) as ser:
-            time.sleep(2)
-            ser.write(bytes('GREEN\n','utf-8'))
+        time.sleep(2)
+        ser.write(bytes('GREEN\n','utf-8'))
             
     if prediction_score > 0.7 and prediction_string == 'blue':
         print("BLUE")
-        with serial.Serial('/dev/ttyACM0', 11520, timeout=10) as ser:
-            time.sleep(2)
-            ser.write(bytes('BLUE\n','utf-8'))
-            
-            # Removed the red LED code from here to prevent conflicts
-               
+        time.sleep(2)
+        ser.write(bytes('BLUE\n','utf-8'))
+        
+    if prediction_score > 0.7 and prediction_string == 'red':
+        print("RED")
+        time.sleep(2)
+        ser.write(bytes('RED\n','utf-8'))        
               
 output_widget.on_click(getdata)       
 state_widget.observe(start_live, names='value')
