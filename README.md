@@ -1,26 +1,6 @@
 # Image Recognition
 
->MIT License
->
 >Copyright (c) 2022 324Hz
->
->Permission is hereby granted, free of charge, to any person obtaining a copy <br>
->of this software and associated documentation files (the "Software"), to deal <br>
->in the Software without restriction, including without limitation the rights <br>
->to use, copy, modify, merge, publish, distribute, sublicense, and/or sell <br>
->copies of the Software, and to permit persons to whom the Software is <br>
->furnished to do so, subject to the following conditions: <br>
->
->The above copyright notice and this permission notice shall be included in all <br>
->copies or substantial portions of the Software. <br>
->
->THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR <br>
->IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, <br>
->FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE <br>
->AUTHORS (WIN21H2, 324HZ) OR COPYRIGHT HOLDERS (WIN21H2, 324HZ) BE LIABLE FOR <br>
->ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT <br>
->OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE <br>
->USE OR OTHER DEALINGS IN THE SOFTWARE. <br>
 
 
 Description: This repository will take you through first setting up Jupyter Labs on a Nvidia Jetson Nano, followed by testing if your camera is working. It will then end off with running the image recognition program which will allow you to interface with a Arduino Uno and send serial commands which you can use for your own project
@@ -29,6 +9,10 @@ Description: This repository will take you through first setting up Jupyter Labs
 >1 - [Prerequisites](#prerequisites)<br>
 >2 - [What you need to have on-hand](#what-you-need-to-have-on-hand)<br>
 >3 - [Getting started](#getting-started)<br>
+>4 - Running the default image recognition program
+>5 - Making edits to the program
+>6 - Including the Arduino board
+>7 - Wrap up/conclusion
 
 # Prerequisites
  
