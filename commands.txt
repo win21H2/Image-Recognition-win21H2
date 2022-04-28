@@ -1,9 +1,0 @@
-Here is a list of all of the commands you need to enter. You have to make sure tat they are entered in the correct order and you have to check the python.py file to see where you enter the command/s
-
-1) !pip3 install pyserial
-
-2) !ls -ltrh /dev/video*
-
-3) DATA_DIR = '/nvdli-nano/data/classification/'
-
-4) !mkdir -p {DATA_DIR}
