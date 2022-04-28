@@ -156,7 +156,6 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         prediction_widget.value = dataset.categories[category_index]
         prediction_string = dataset.categories[category_index]
         prediction_score = list(output)[category_index]
-        # Started testing here the code which will make the LED stay on for a set time before it turns off. 
         
         # What happens is while the camera feed is "live", any code in the if statement is run repeated and when it reaches the code below, it compares if
         # the prediction score is greater than 0.7 and the attached string is "red", it will run the code below it and continue on with the last "for" statement.
