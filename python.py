@@ -51,7 +51,7 @@ import torchvision.transforms as transforms
 from dataset import ImageClassificationDataset
 
 TASK = 'colors'
-CATEGORIES = ['green', 'blue', 'red']
+CATEGORIES = ['blue', 'red']
 DATASETS = ['A', 'B', 'C']
 
 TRANSFORMS = transforms.Compose([
@@ -186,11 +186,6 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         
         # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface 
         # the arduino so the red LED stays on for a set time after seeing the red triangle
-        
-        if prediction_score > 0.7 and prediction_string == 'green':
-            print("GREEN")
-            time.sleep(2)
-            ser.write(bytes('GREEN\n','utf-8')) 
             
         if prediction_score > 0.7 and prediction_string == 'blue':
             print("BLUE")
@@ -212,10 +207,6 @@ def start_live(change):
         execute_thread.start()
         
 def getdata(b = None):
-    if prediction_score > 0.7 and prediction_string == 'green':
-        print("GREEN")
-        time.sleep(2)
-        ser.write(bytes('GREEN\n','utf-8'))
             
     if prediction_score > 0.7 and prediction_string == 'blue':
         print("BLUE")
