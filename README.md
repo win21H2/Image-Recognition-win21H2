@@ -1,9 +1,14 @@
-# Image Recognition
+# Image Recognition <br>
+# Project Silent Willow
 
 >Copyright (c) 2022 324Hz
 ##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code snapshots
 
-Description: During this repository, I will take you through how to setup the Jetson Nano with Jupyter Labs, test if your camera is working by running an example camera file, test the unedited version of the image recognition program, and finnaly end off with making changes to the image recognition program and include an Arduino board.
+Image recognition description:
+During the first part of this repository, I will take you through how to setup the Nvidia Jetson nano with Jupyter Labs, run a sample camera script to check your camera is functioning, run the sample image recognition program (which comes with the docker), and finnaly finish off with changing the code to use an Arduino Uno.
+
+Project Silent Willow description:
+During the second part of this repository, I will include the code for the mechanum vehicle although I will (due to the ease of copying) not include any schematics or PCB gerber files. This will mean that you <b> have </b> to figure out the wiring yourself.
 
 ### Chapters
 >1 - [Prerequisites](#prerequisites)<br>
