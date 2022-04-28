@@ -20,7 +20,6 @@
 //OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 //USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-int gled = 4;
 int bled = 5;
 int rled = 6;
 // initialize the three LED's with different pins
@@ -28,7 +27,6 @@ int rled = 6;
 void setup() {
   Serial.begin(11520);
   // begin baud rate at 115200 because 9600 did not work with serial communication with the Jetson Nano
-  pinMode(gled, OUTPUT);
   pinMode(bled, OUTPUT);
   pinMode(rled, OUTPUT);
   // sets the pin mode for every LED to OUTPUT
@@ -55,11 +53,6 @@ void loop() {
     // the reason why this might happen is because when the Jetson gets the score, it sends it ever 2 seconds which means it will be blinking anyways
     // because its constantly getting new data before it has the time to turn off the LED although that does not explain the time when the LED turns off
     
-    if (buffer[0] == 'G') {
-      digitalWrite(gled, HIGH);
-      delay(3000);
-      digitalWrite(gled, LOW); 
-    }
     if (buffer[0] == 'B') {
       digitalWrite(bled, HIGH);
       delay(3000);
