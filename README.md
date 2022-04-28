@@ -1,6 +1,5 @@
 # Image Recognition
 
->Copyright (c) 2022 324Hz
 ##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code snapshots
 
 ##### Image recognition description:
