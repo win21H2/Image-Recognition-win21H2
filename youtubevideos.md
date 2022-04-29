@@ -1,5 +1,6 @@
 # Youtube videos linked to this project
 
+>[Added a stepper motor to the mix!](https://youtube.com/shorts/_sys3d2fT0s?feature=share) <br>
 >[Got the LED to stay on for a set amount of time!](https://youtube.com/shorts/l2qUSd_qGmc?feature=share) <br>
 >[It works! Image recognition sent serial commands to the Arduino](https://youtube.com/shorts/ik4SWNthZZg?feature=share) <br> 
 >[Nvidia Jetson nano image recognition and Arduino serial communications](https://youtu.be/EpYQ6SGob_o) <br>
