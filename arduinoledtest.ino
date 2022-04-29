@@ -39,7 +39,7 @@ void setup() {
 // blinking we are already getting from the Arduino.
  
 void ledoff(int lednum) {
-  delay(2500);
+  delay(2000);
   digitalWrite(lednum, LOW);
 }
 
@@ -55,13 +55,11 @@ void loop() {
     
     if (buffer[0] == 'B') {
       digitalWrite(bled, HIGH);
-      delay(3000);
-      digitalWrite(bled, LOW); 
+      ledoff(bled); 
     }
     if (buffer[0] == 'R') {
       digitalWrite(rled, HIGH);
-      delay(3000);
-      digitalWrite(rled, LOW); 
+      ledoff(rled); 
     }
     
   }
