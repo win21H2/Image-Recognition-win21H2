@@ -1,9 +1,12 @@
+
+
 # Run all of these in this exact order or else the rest of the code will not work
 # Note that you have to look through sections marked with "README" at the end (example below) because those are where the changes are compared to the default notebook
 # Each time you see the below line, you have to make a new cell in Jupyter labs 
+
 #------------------------------------------------------------------------------------------------------------------ README
-
-
+# Changes to the code made here
+#------------------------------------------------------------------------------------------------------------------ README
 
 
 #------------------------------------------------------------------------------------------------------------------ README
@@ -162,6 +165,9 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         
         # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface 
         # the arduino so the red LED stays on for a set time after seeing the red triangle
+        
+        # I have changed the prediction score to be tighter and I am currently working on using a stepper motor instead of a LED because the final project uses
+        # a stepper motor
             
         if prediction_score > 0.7 and prediction_string == 'blue':
             print("BLUE")
