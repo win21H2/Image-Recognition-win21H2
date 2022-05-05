@@ -160,14 +160,13 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         prediction_string = dataset.categories[category_index]
         prediction_score = list(output)[category_index]
         
-        # What happens is while the camera feed is "live", any code in the if statement is run repeated and when it reaches the code below, it compares if
-        # the prediction score is greater than 0.7 and the attached string is "red", it will run the code below it and continue on with the last "for" statement.
+        # What happens is while the camera feed is "live", any code in the if statement is run repeated and when it reaches the code below, it compares if the prediction score is greater than 0.7 and the attached string is "red", it will run the code below it and continue on with the last "for" statement.
         
-        # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface 
-        # the arduino so the red LED stays on for a set time after seeing the red triangle
+        # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface the arduino so the red LED stays on for a set time after seeing the red triangle
         
-        # I have changed the prediction score to be tighter and I am currently working on using a stepper motor instead of a LED because the final project uses
-        # a stepper motor
+        # We also need to see how to interface a stepper motor because right now since it only sends a short amount of data, the stepper motor only moves in really small steps
+        
+        # I have changed the prediction score to be tighter and I am currently working on using a stepper motor instead of a LED because the final project use a stepper motor
             
         if prediction_score > 0.7 and prediction_string == 'blue':
             print("BLUE")
