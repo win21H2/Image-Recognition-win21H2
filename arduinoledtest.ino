@@ -45,22 +45,28 @@ void ledoff(int lednum) {
 
 void loop() {
   char buffer[16];
-  if (Serial.available() > 0) { // checks if serial is available and if the data is more than 0
+  if (Serial.available() > 0) {
     int size = Serial.readBytesUntil('\n', buffer, 12);
     
-    // as of now, we are trying to delay it so once it gets the data from the Jetson, it waits 3000 miliseconds and then runs the digitalWrite LOW line
-    
-    // the reason why this might happen is because when the Jetson gets the score, it sends it ever 2 seconds which means it will be blinking anyways
-    // because its constantly getting new data before it has the time to turn off the LED although that does not explain the time when the LED turns off
-    
-    if (buffer[0] == 'B') {
-      digitalWrite(bled, HIGH);
-      ledoff(bled); 
+    if (buffer[0] == 'G') {
+      gledON = !gledON;
+      digitalWrite(gled, gledON);
     }
+    
     if (buffer[0] == 'R') {
-      digitalWrite(rled, HIGH);
-      ledoff(rled); 
+      rledON = !rledON;
+      digitalWrite(rled, rledON);  
     }
-    
+    /*
+    Logic tree below
+    If "R" comes from the output => turn RLED on => keep RLED on
+    If "G" comes from the output => turn RLED off => turn GLED on => keep GLED on
+    If "G" comes from the output (THIS IS WHEN THE JETSON RESENDS) => keep GLED on
+    */
+
+    if (received_code != previous_code ) {
+        // do stuff here
+        previous_code=received_code;
+    }
   }
 }
