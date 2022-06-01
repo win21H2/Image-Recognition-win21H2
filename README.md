@@ -2,6 +2,10 @@
 
 ##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code snapshots
 
+#### TODO
+> - Work on Case Switches for the Arduino side
+> - Continue adding docs for image recognition
+
 ##### Image recognition description:
 >During the first part of this repository, I will take you through how to setup the Nvidia Jetson nano with Jupyter Labs, run a sample camera script to check your camera is functioning, run the sample image recognition program (which comes with the docker), and finnaly finish off with changing the code to use an Arduino Uno.
 
