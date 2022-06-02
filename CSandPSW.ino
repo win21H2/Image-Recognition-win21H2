@@ -1,60 +1,3 @@
-int rled = 2;
-int gled = 3;
-
-void setup() {
-  Serial.begin(11520);
-  pinMode(rled, OUTPUT);
-  pinMode(gled, OUTPUT);
-}
-
-void loop() {
-  if (Serial.available() > 0) {
-    int inByte = Serial.read();
-    switch (inByte) {
-      case 'R':
-        digitalWrite(rled, HIGH);
-        digitalWrite(gled, LOW);
-        break;
-      case 'B':
-        digitalWrite(rled, LOW);
-        digitalWrite(gled, HIGH);
-        break;
-      case 'O':
-        digitalWrite(rled, LOW);
-        digitalWrite(gled, LOW);
-        break;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* 0 = 0
- * - = 
- * 1 = wheelSpeed
- * 
- * 
- * "R" or "r" = STOP
- * 0
- * 0
- * 0
- * 0
- * 
- * "B" or "b" = GO (FORWARDS)
- * -
- * 1
- * 1
- * -
-*/
-
 #include <SoftwareSerial.h>
 #include <AccelStepper.h>
 
@@ -74,46 +17,63 @@ void setup() {
   LeftBackWheel.setMaxSpeed(3000);
   RightFrontWheel.setMaxSpeed(3000);
   RightBackWheel.setMaxSpeed(3000);
-  
-  Serial.begin(38400);
+
+  Serial.begin(11520);
+  //Serial.begin(38400);
   Bluetooth.begin(9600); 
 }
 
 void loop() {
+  if (Serial.available() > 0) {
+    int inByte = Serial.read();
+    switch (inByte) {
+      case 'R':
+         LeftFrontWheel.setSpeed(-wheelSpeed);
+         LeftBackWheel.setSpeed(wheelSpeed);
+         RightFrontWheel.setSpeed(wheelSpeed);
+         RightBackWheel.setSpeed(-wheelSpeed);
+        break;
+      case 'B':
+         LeftFrontWheel.setSpeed(wheelSpeed);
+         LeftBackWheel.setSpeed(-wheelSpeed);
+         RightFrontWheel.setSpeed(-wheelSpeed);
+         RightBackWheel.setSpeed(wheelSpeed);
+        break;
+      case 'O':
+         LeftFrontWheel.setSpeed(0);
+         LeftBackWheel.setSpeed(0);
+         RightFrontWheel.setSpeed(0);
+         RightBackWheel.setSpeed(0);
+        break;
+    }
+  }
+  
   if (Bluetooth.available() > 0) {
     dataIn = Bluetooth.read();  
     if (dataIn == 0) {
       m = 0;
-      Serial.println("dataIn0");
     }
     if (dataIn == 2) {
       m = 2;
-      Serial.println("dataIn2");
     }
     if (dataIn == 4) {
       m = 4;
-      Serial.println("dataIn4");
     }
     if (dataIn == 5) {
       m = 5;
-      Serial.println("dataIn5");
     }
     if (dataIn == 7) {
       m = 7;
-      Serial.println("dataIn7");
     }
     if (dataIn == 9) {
       m = 9;
-      Serial.println("dataIn9");
     }
     if (dataIn == 10) {
       m = 10;
-      Serial.println("dataIn10");
     }
     
     if (dataIn >= 16) {
       wheelSpeed = dataIn * 10;
-      Serial.println(wheelSpeed);
     }
   }
 
@@ -212,9 +172,7 @@ void runSteps() {
       }
     }
   }
-
   for (int i = 1; i <= index - 1; i++) {
-
     LeftFrontWheel.moveTo(lfw[i]);
     LeftFrontWheel.setSpeed(wheelSpeed);
     LeftBackWheel.moveTo(lbw[i]);
