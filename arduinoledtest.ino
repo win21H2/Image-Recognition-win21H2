@@ -20,53 +20,31 @@
 //OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 //USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-int bled = 5;
-int rled = 6;
-// initialize the three LED's with different pins
+int rled = 2;
+int gled = 3;
 
 void setup() {
   Serial.begin(11520);
-  // begin baud rate at 115200 because 9600 did not work with serial communication with the Jetson Nano
-  pinMode(bled, OUTPUT);
   pinMode(rled, OUTPUT);
-  // sets the pin mode for every LED to OUTPUT
-  while (!Serial) { // waits for the serial port to connect
-    ;
-  }
-}
-
-// We are trying now to see if we can get a void function to run which keeps the LED on after a set time. For now any changes made here will not affect the
-// blinking we are already getting from the Arduino.
- 
-void ledoff(int lednum) {
-  delay(2000);
-  digitalWrite(lednum, LOW);
+  pinMode(gled, OUTPUT);
 }
 
 void loop() {
-  char buffer[16];
   if (Serial.available() > 0) {
-    int size = Serial.readBytesUntil('\n', buffer, 12);
-    
-    if (buffer[0] == 'G') {
-      gledON = !gledON;
-      digitalWrite(gled, gledON);
-    }
-    
-    if (buffer[0] == 'R') {
-      rledON = !rledON;
-      digitalWrite(rled, rledON);  
-    }
-    /*
-    Logic tree below
-    If "R" comes from the output => turn RLED on => keep RLED on
-    If "G" comes from the output => turn RLED off => turn GLED on => keep GLED on
-    If "G" comes from the output (THIS IS WHEN THE JETSON RESENDS) => keep GLED on
-    */
-
-    if (received_code != previous_code ) {
-        // do stuff here
-        previous_code=received_code;
+    int inByte = Serial.read();
+    switch (inByte) {
+      case 'R':
+        digitalWrite(rled, HIGH);
+        digitalWrite(gled, LOW);
+        break;
+      case 'B':
+        digitalWrite(rled, LOW);
+        digitalWrite(gled, HIGH);
+        break;
+      case 'O':
+        digitalWrite(rled, LOW);
+        digitalWrite(gled, LOW);
+        break;
     }
   }
 }
