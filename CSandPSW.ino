@@ -2,10 +2,10 @@
 #include <AccelStepper.h>
 
 SoftwareSerial Bluetooth(A5, 0);
-AccelStepper LeftBackWheel(1, 3, 2); 
-AccelStepper LeftFrontWheel(1, 5, 4); 
-AccelStepper RightBackWheel(1, 7, 6);  
-AccelStepper RightFrontWheel(1, 9, 8); 
+AccelStepper w1(1, 3, 2); 
+AccelStepper w2(1, 5, 4); 
+AccelStepper w3(1, 7, 6);  
+AccelStepper w4(1, 9, 8); 
 
 int wheelSpeed = 1500;
 int dataIn, m;
@@ -13,13 +13,12 @@ int lbw[50], lfw[50], rbw[50], rfw[50];
 int index = 0;
 
 void setup() {
-  LeftFrontWheel.setMaxSpeed(3000);
-  LeftBackWheel.setMaxSpeed(3000);
-  RightFrontWheel.setMaxSpeed(3000);
-  RightBackWheel.setMaxSpeed(3000);
+  w1.setMaxSpeed(3000);
+  w2.setMaxSpeed(3000);
+  w3.setMaxSpeed(3000);
+  w4.setMaxSpeed(3000);
 
   Serial.begin(11520);
-  //Serial.begin(38400);
   Bluetooth.begin(9600); 
 }
 
@@ -28,22 +27,25 @@ void loop() {
     int inByte = Serial.read();
     switch (inByte) {
       case 'R':
-         LeftFrontWheel.setSpeed(-wheelSpeed);
-         LeftBackWheel.setSpeed(wheelSpeed);
-         RightFrontWheel.setSpeed(wheelSpeed);
-         RightBackWheel.setSpeed(-wheelSpeed);
+        Serial.println("RED");
+        w1.setSpeed(-wheelSpeed);
+        w2.setSpeed(wheelSpeed);
+        w3.setSpeed(wheelSpeed);
+        w4.setSpeed(-wheelSpeed);
         break;
       case 'B':
-         LeftFrontWheel.setSpeed(wheelSpeed);
-         LeftBackWheel.setSpeed(-wheelSpeed);
-         RightFrontWheel.setSpeed(-wheelSpeed);
-         RightBackWheel.setSpeed(wheelSpeed);
+        Serial.println("BLUE");
+        w1.setSpeed(wheelSpeed);
+        w2.setSpeed(-wheelSpeed);
+        w3.setSpeed(-wheelSpeed);
+        w4.setSpeed(wheelSpeed);
         break;
       case 'O':
-         LeftFrontWheel.setSpeed(0);
-         LeftBackWheel.setSpeed(0);
-         RightFrontWheel.setSpeed(0);
-         RightBackWheel.setSpeed(0);
+        Serial.println("OFF");
+        w1.setSpeed(0);
+        w2.setSpeed(0);
+        w3.setSpeed(0);
+        w4.setSpeed(0);
         break;
     }
   }
@@ -101,15 +103,15 @@ void loop() {
   
   if (m == 12) {
     if (index == 0) {
-      LeftBackWheel.setCurrentPosition(0);
-      LeftFrontWheel.setCurrentPosition(0);
-      RightBackWheel.setCurrentPosition(0);
-      RightFrontWheel.setCurrentPosition(0);
+      w1.setCurrentPosition(0);
+      w2.setCurrentPosition(0);
+      w3.setCurrentPosition(0);
+      w4.setCurrentPosition(0);
     }
-    lbw[index] = LeftBackWheel.currentPosition(); 
-    lfw[index] = LeftFrontWheel.currentPosition();
-    rbw[index] = RightBackWheel.currentPosition();
-    rfw[index] = RightFrontWheel.currentPosition();
+    lbw[index] = w1.currentPosition(); 
+    lfw[index] = w2.currentPosition();
+    rbw[index] = w3.currentPosition();
+    rfw[index] = w4.currentPosition();
     index++;
     m = 0;
   }
@@ -126,28 +128,28 @@ void loop() {
     }
   }
 
-  LeftFrontWheel.runSpeed();
-  LeftBackWheel.runSpeed();
-  RightFrontWheel.runSpeed();
-  RightBackWheel.runSpeed();
+  w1.runSpeed();
+  w2.runSpeed();
+  w3.runSpeed();
+  w4.runSpeed();
 }
 
 void runSteps() {
   for (int i = index - 1; i >= 0; i--) { 
-    LeftFrontWheel.moveTo(lfw[i]);
-    LeftFrontWheel.setSpeed(wheelSpeed);
-    LeftBackWheel.moveTo(lbw[i]);
-    LeftBackWheel.setSpeed(wheelSpeed);
-    RightFrontWheel.moveTo(rfw[i]);
-    RightFrontWheel.setSpeed(wheelSpeed);
-    RightBackWheel.moveTo(rbw[i]);
-    RightBackWheel.setSpeed(wheelSpeed);
+    w1.moveTo(lfw[i]);
+    w1.setSpeed(wheelSpeed);
+    w2.moveTo(lbw[i]);
+    w2.setSpeed(wheelSpeed);
+    w3.moveTo(rfw[i]);
+    w3.setSpeed(wheelSpeed);
+    w4.moveTo(rbw[i]);
+    w4.setSpeed(wheelSpeed);
 
-    while (LeftBackWheel.currentPosition() != lbw[i] & LeftFrontWheel.currentPosition() != lfw[i] & RightFrontWheel.currentPosition() != rfw[i] & RightBackWheel.currentPosition() != rbw[i]) {
-      LeftFrontWheel.runSpeedToPosition();
-      LeftBackWheel.runSpeedToPosition();
-      RightFrontWheel.runSpeedToPosition();
-      RightBackWheel.runSpeedToPosition();
+    while (w1.currentPosition() != lbw[i] & w2.currentPosition() != lfw[i] & w3.currentPosition() != rfw[i] & w4.currentPosition() != rbw[i]) {
+      w1.runSpeedToPosition();
+      w2.runSpeedToPosition();
+      w3.runSpeedToPosition();
+      w4.runSpeedToPosition();
 
       if (Bluetooth.available() > 0) {    
         dataIn = Bluetooth.read();
@@ -173,20 +175,20 @@ void runSteps() {
     }
   }
   for (int i = 1; i <= index - 1; i++) {
-    LeftFrontWheel.moveTo(lfw[i]);
-    LeftFrontWheel.setSpeed(wheelSpeed);
-    LeftBackWheel.moveTo(lbw[i]);
-    LeftBackWheel.setSpeed(wheelSpeed);
-    RightFrontWheel.moveTo(rfw[i]);
-    RightFrontWheel.setSpeed(wheelSpeed);
-    RightBackWheel.moveTo(rbw[i]);
-    RightBackWheel.setSpeed(wheelSpeed);
+    w1.moveTo(lfw[i]);
+    w1.setSpeed(wheelSpeed);
+    w2.moveTo(lbw[i]);
+    w2.setSpeed(wheelSpeed);
+    w3.moveTo(rfw[i]);
+    w3.setSpeed(wheelSpeed);
+    w4.moveTo(rbw[i]);
+    w4.setSpeed(wheelSpeed);
 
-    while (LeftBackWheel.currentPosition() != lbw[i]& LeftFrontWheel.currentPosition() != lfw[i] & RightFrontWheel.currentPosition() != rfw[i] & RightBackWheel.currentPosition() != rbw[i]) {
-      LeftFrontWheel.runSpeedToPosition();
-      LeftBackWheel.runSpeedToPosition();
-      RightFrontWheel.runSpeedToPosition();
-      RightBackWheel.runSpeedToPosition();
+    while (w1.currentPosition() != lbw[i]& w2.currentPosition() != lfw[i] & w3.currentPosition() != rfw[i] & w4.currentPosition() != rbw[i]) {
+      w1.runSpeedToPosition();
+      w2.runSpeedToPosition();
+      w3.runSpeedToPosition();
+      w4.runSpeedToPosition();
 
       if (Bluetooth.available() > 0) {    
         dataIn = Bluetooth.read();
@@ -214,44 +216,44 @@ void runSteps() {
 }
 
 void moveForward() {
-  LeftFrontWheel.setSpeed(wheelSpeed);
-  LeftBackWheel.setSpeed(-wheelSpeed);
-  RightFrontWheel.setSpeed(-wheelSpeed);
-  RightBackWheel.setSpeed(wheelSpeed);
+  w1.setSpeed(wheelSpeed);
+  w2.setSpeed(-wheelSpeed);
+  w3.setSpeed(-wheelSpeed);
+  w4.setSpeed(wheelSpeed);
 }
 void moveBackward() {
-  LeftFrontWheel.setSpeed(-wheelSpeed);
-  LeftBackWheel.setSpeed(wheelSpeed);
-  RightFrontWheel.setSpeed(wheelSpeed);
-  RightBackWheel.setSpeed(-wheelSpeed);
+  w1.setSpeed(-wheelSpeed);
+  w2.setSpeed(wheelSpeed);
+  w3.setSpeed(wheelSpeed);
+  w4.setSpeed(-wheelSpeed);
 }
 void moveSidewaysRight() {
-  LeftFrontWheel.setSpeed(-wheelSpeed);
-  LeftBackWheel.setSpeed(-wheelSpeed);
-  RightFrontWheel.setSpeed(wheelSpeed);
-  RightBackWheel.setSpeed(wheelSpeed);
+  w1.setSpeed(-wheelSpeed);
+  w2.setSpeed(-wheelSpeed);
+  w3.setSpeed(wheelSpeed);
+  w4.setSpeed(wheelSpeed);
 }
 void moveSidewaysLeft() {
-  LeftFrontWheel.setSpeed(wheelSpeed);
-  LeftBackWheel.setSpeed(wheelSpeed);
-  RightFrontWheel.setSpeed(-wheelSpeed);
-  RightBackWheel.setSpeed(-wheelSpeed);
+  w1.setSpeed(wheelSpeed);
+  w2.setSpeed(wheelSpeed);
+  w3.setSpeed(-wheelSpeed);
+  w4.setSpeed(-wheelSpeed);
 }
 void rotateLeft() {
-  LeftFrontWheel.setSpeed(wheelSpeed);
-  LeftBackWheel.setSpeed(wheelSpeed);
-  RightFrontWheel.setSpeed(wheelSpeed);
-  RightBackWheel.setSpeed(wheelSpeed);
+  w1.setSpeed(wheelSpeed);
+  w2.setSpeed(wheelSpeed);
+  w3.setSpeed(wheelSpeed);
+  w4.setSpeed(wheelSpeed);
 }
 void rotateRight() {
-  LeftFrontWheel.setSpeed(-wheelSpeed);
-  LeftBackWheel.setSpeed(-wheelSpeed);
-  RightFrontWheel.setSpeed(-wheelSpeed);
-  RightBackWheel.setSpeed(-wheelSpeed);
+  w1.setSpeed(-wheelSpeed);
+  w2.setSpeed(-wheelSpeed);
+  w3.setSpeed(-wheelSpeed);
+  w4.setSpeed(-wheelSpeed);
 }
 void stopMoving() {
-  LeftFrontWheel.setSpeed(0);
-  LeftBackWheel.setSpeed(0);
-  RightFrontWheel.setSpeed(0);
-  RightBackWheel.setSpeed(0);
+  w1.setSpeed(0);
+  w2.setSpeed(0);
+  w3.setSpeed(0);
+  w4.setSpeed(0);
 }
