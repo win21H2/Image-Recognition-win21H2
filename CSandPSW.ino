@@ -127,12 +127,14 @@ void loop() {
       index = 0;
     }
   }
-
+  // try to optimize this section below
   w1.runSpeed();
   w2.runSpeed();
   w3.runSpeed();
   w4.runSpeed();
 }
+
+// check if we need the below in order for the vehicle to function because some of the code is for saving steps which we are not doing
 
 void runSteps() {
   for (int i = index - 1; i >= 0; i--) { 
@@ -146,6 +148,7 @@ void runSteps() {
     w4.setSpeed(wheelSpeed);
 
     while (w1.currentPosition() != lbw[i] & w2.currentPosition() != lfw[i] & w3.currentPosition() != rfw[i] & w4.currentPosition() != rbw[i]) {
+      // try to optimize this section below
       w1.runSpeedToPosition();
       w2.runSpeedToPosition();
       w3.runSpeedToPosition();
@@ -214,6 +217,67 @@ void runSteps() {
     }
   }
 }
+
+/*
+Try to optimize the code below for example doing something like:
+
+w1, w2, w3, w4.setSpeed(0);
+
+or 
+
+w1, w4.setSpeed(wheelSpeed);
+w2, w3.setSpeed(wheelSpeed);
+
+*/
+
+/*
+Movement logic tree (includes all of the possible combos of the movement code
+w1(-)
+w2(-)
+w3(-)
+w4(-)
+
+w1( )
+w2( )
+w3( )
+w4( )
+---
+w1( )
+w2(-)
+w3(-)
+w4( )
+
+w1(-)
+w2( )
+w3( )
+w4(-)
+---
+w1(-)
+w2(-)
+w3( )
+w4( )
+
+w1( )
+w2( )
+w3(-)
+w4(-)
+---
+w1(-)
+w2( )
+w3(-)
+w4( )
+
+w1( )
+w2(-)
+w3( )
+w4(-)
+---
+w1(0)
+w2(0)
+w3(0)
+w4(0)
+---
+*/
 
 void moveForward() {
   w1.setSpeed(wheelSpeed);
