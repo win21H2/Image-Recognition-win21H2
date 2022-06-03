@@ -1,3 +1,15 @@
+/*
+324hz
+win21H2
+
+WHATS NETX?
+ - Try implementing a system using either the LiDAR unit (preffered) or a ultrasonic sensor (might be harder to implement and less reliable) to make it so
+ that the functions below only run when the vehicle is within a certain distance to the object
+ 
+ - Figure out how to have the model pre trained on the Jetson so that you dont have to train it every time (although this might not be possible because of
+ docker containers
+*/
+
 #include <SoftwareSerial.h>
 #include <AccelStepper.h>
 
