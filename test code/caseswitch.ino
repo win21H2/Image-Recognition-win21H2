@@ -10,14 +10,14 @@ void loop() {
     int inByte = Serial.read();
     switch (inByte) {
       case 'a':
-        digitalWrite(2, HIGH);
+        digitalWrite(4, HIGH);
         digitalWrite(3, LOW);
-        digitalWrite(4, LOW);
+        digitalWrite(2, LOW);
         break;
       case 'b':
-        digitalWrite(3, HIGH);
+        digitalWrite(4, HIGH);
+        digitalWrite(3, LOW);
         digitalWrite(2, LOW);
-        digitalWrite(4, LOW);
         break;
       case 'c':
         digitalWrite(4, HIGH);
