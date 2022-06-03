@@ -1,6 +1,7 @@
 # Image Recognition
 
-##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code files
+##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code files<br>
+##### Also note: This repository is built on the Jupyter Labs notebook provided by the Nvidia developers page.
 
 #### TODO
 > - Continue addings the docs for the image recognition program
