@@ -144,12 +144,12 @@ score_widgets = []
 for category in dataset.categories:
     score_widget = ipywidgets.FloatSlider(min=0.0, max=1.0, description=category, orientation='vertical')
     score_widgets.append(score_widget)
-    
+
 def live(state_widget, model, camera, prediction_widget, score_widget):
     global dataset
     global prediction_string
     global prediction_score
-    ser = serial.Serial('/dev/ttyACM0', 11520, timeout=10) # Added the serial connection code here because we want it to run once not multiple times in the if statement
+    ser = serial.Serial('/dev/ttyACM0', 11520, timeout=10)
     while state_widget.value == 'live':
         image = camera.value
         preprocessed = preprocess(image)
@@ -159,25 +159,16 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         prediction_widget.value = dataset.categories[category_index]
         prediction_string = dataset.categories[category_index]
         prediction_score = list(output)[category_index]
-        
-        # What happens is while the camera feed is "live", any code in the if statement is run repeated and when it reaches the code below, it compares if the prediction score is greater than 0.7 and the attached string is "red", it will run the code below it and continue on with the last "for" statement.
-        
-        # As of now, we will have to change the prediction score to make it a tighter prediction score such as "0.9" and we need to figure out how to interface the arduino so the red LED stays on for a set time after seeing the red triangle
-        
-        # We also need to see how to interface a stepper motor because right now since it only sends a short amount of data, the stepper motor only moves in really small steps
-        
-        # I have changed the prediction score to be tighter and I am currently working on using a stepper motor instead of a LED because the final project use a stepper motor
-            
-        if prediction_score > 0.7 and prediction_string == 'blue':
-            print("BLUE")
+
+        if prediction_score > 0.8 and prediction_string == 'green':
+            time.sleep(2)
+            ser.write(bytes('GREEN\n','utf-8'))
+        if prediction_score > 0.8 and prediction_string == 'blue':
             time.sleep(2)
             ser.write(bytes('BLUE\n','utf-8'))
-            
-        if prediction_score > 0.7 and prediction_string == 'red':
-            print("RED")
+        if prediction_score > 0.8 and prediction_string == 'none':
             time.sleep(2)
-            ser.write(bytes('RED\n','utf-8'))
-            
+            ser.write(bytes('OFF\n','utf-8'))
             
         for i, score in enumerate(list(output)):
             score_widgets[i].value = score    
@@ -186,19 +177,17 @@ def start_live(change):
     if change['new'] == 'live':
         execute_thread = threading.Thread(target=live, args=(state_widget, model, camera, prediction_widget, score_widget))
         execute_thread.start()
-        
+
 def getdata(b = None):
-            
-    if prediction_score > 0.7 and prediction_string == 'blue':
+    if prediction_score > 0.9 and prediction_string == 'red':
+        print("GREEN")
+        time.sleep(2)
+        ser.write(bytes('RED\n','utf-8'))       
+    if prediction_score > 0.8 and prediction_string == 'blue':
         print("BLUE")
         time.sleep(2)
-        ser.write(bytes('BLUE\n','utf-8'))
-        
-    if prediction_score > 0.7 and prediction_string == 'red':
-        print("RED")
-        time.sleep(2)
-        ser.write(bytes('RED\n','utf-8'))        
-              
+        ser.write(bytes('BLUE\n','utf-8'))              
+                
 output_widget.on_click(getdata)       
 state_widget.observe(start_live, names='value')
 live_execution_widget = ipywidgets.VBox([
