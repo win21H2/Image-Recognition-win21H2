@@ -160,14 +160,14 @@ def live(state_widget, model, camera, prediction_widget, score_widget):
         prediction_string = dataset.categories[category_index]
         prediction_score = list(output)[category_index]
 
-        if prediction_score > 0.8 and prediction_string == 'green':
-            time.sleep(2)
-            ser.write(bytes('GREEN\n','utf-8'))
-        if prediction_score > 0.8 and prediction_string == 'blue':
-            time.sleep(2)
+        if prediction_score > 0.7 and prediction_string == 'red':
+            time.sleep(0.1)
+            ser.write(bytes('RED\n','utf-8'))
+        if prediction_score > 0.7 and prediction_string == 'blue':
+            time.sleep(0.1)
             ser.write(bytes('BLUE\n','utf-8'))
-        if prediction_score > 0.8 and prediction_string == 'none':
-            time.sleep(2)
+        if prediction_score > 0.7 and prediction_string == 'off':
+            time.sleep(0.1)
             ser.write(bytes('OFF\n','utf-8'))
             
         for i, score in enumerate(list(output)):
@@ -179,14 +179,10 @@ def start_live(change):
         execute_thread.start()
 
 def getdata(b = None):
-    if prediction_score > 0.9 and prediction_string == 'red':
+    if prediction_score > 0.8 and prediction_string == 'red':
         print("GREEN")
         time.sleep(2)
-        ser.write(bytes('RED\n','utf-8'))       
-    if prediction_score > 0.8 and prediction_string == 'blue':
-        print("BLUE")
-        time.sleep(2)
-        ser.write(bytes('BLUE\n','utf-8'))              
+        ser.write(bytes('RED\n','utf-8'))                    
                 
 output_widget.on_click(getdata)       
 state_widget.observe(start_live, names='value')
