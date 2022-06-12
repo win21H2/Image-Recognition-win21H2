@@ -80,6 +80,10 @@ Step 5. Log into Jupyter Labs
 
 ![image](https://user-images.githubusercontent.com/92825997/163696076-2bb063ed-7d28-462a-8a77-121c0170d2a9.png)
 
+# Running the default image recognition program
+
+# Making edits to the program
+
 # Including the Arduino board (Without the Jetson)
 >During this stage you will find out what the Arduino side of the code looks like, find out what the different lines do, and test out the code in the Serial Monitor (we are not using the Jetson yet because it requires a different baud rate which we have to setup later)
 
@@ -209,3 +213,8 @@ This code looks similar to the one before right? That is correct although we hav
 >Description: We use the baud rate of ```11520``` because the Jetson nano is able to communicate using that baud rate. NOTE: this baud rate is NOT the same as the default Arduino IDE baud rate so you will not be able to send serial commands to the Arduino via the serial monitor
 
 Once you have uploaded the code to the Arduino board, you can connect the board to the Jetson using the programming cable and get the image recognition program up and running. What you will notice is that when the Prediction score goes above a certain point, the green LED turns on and vice versa!
+
+# Wrap up/conclusion
+To conclude this project, you should by now understand how to get a docker container running on a Jetson, get Jupyter labs running, know how to run your first image recognition program, and know how to edit the code so that it works with an Arduino Uno. You will also have learnt what to use with serial communications with a Jetson nano to Arduino Uno program written using case switches.
+
+>If you have any questions regarding what is in this repository, contact me via discord @ 324Hz#4539 or by email @ 1024bitcoins@gmail.com although note that I am not on it always!
