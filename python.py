@@ -178,19 +178,22 @@ def start_live(change):
         execute_thread = threading.Thread(target=live, args=(state_widget, model, camera, prediction_widget, score_widget))
         execute_thread.start()
 
+# CAN REMOVE
 def getdata(b = None):
     if prediction_score > 0.8 and prediction_string == 'red':
         print("GREEN")
         time.sleep(2)
         ser.write(bytes('RED\n','utf-8'))                    
                 
-output_widget.on_click(getdata)       
+output_widget.on_click(getdata)  
+# CAN REMOVE
+
 state_widget.observe(start_live, names='value')
 live_execution_widget = ipywidgets.VBox([
     ipywidgets.HBox(score_widgets),
     prediction_widget,
     state_widget,
-    output_widget
+    output_widget # CAN REMOVE
 ])
 
 print("live_execution_widget created")
