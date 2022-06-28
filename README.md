@@ -1,11 +1,11 @@
-# Image Recognition
+<h1 align="center">Image Recognition<br>With Project Silent Willow</h1>
 
-##### Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code files<br>
-##### Also note: This repository is built on the Jupyter Labs notebook provided by the Nvidia developers page.
+<p align="center">
+Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code files<br>
+Also note: This repository is built on the Jupyter Labs notebook which is provided by the Nvidia developers group</p>
 
 #### TODO
 > - Continue addings the docs for the image recognition program
-> - Merge the final code into one file instead of multiple and figure out how to create folders to sort out the files
 
 ##### Image recognition description:
 >During the first part of this repository, I will take you through how to setup the Nvidia Jetson nano with Jupyter Labs, run a sample camera script to check your camera is functioning, run the sample image recognition program (which comes with the docker), and finnaly finish off with changing the code to use an Arduino Uno.
@@ -21,17 +21,20 @@
 >7 - Including the Arduino board (With the Jetson using an example)<br>
 >8 - Wrap up/conclusion<br>
 
-# Prerequisites
+<h1 align="center">Prerequisites</h1>
+
  > - Basic understanding of the Ubuntu/Linux CLI and how to enter commands/open files and navigate paths as well as sudo, pip, and sh commands <br>
  > - Understanding of how to use the Arduino IDE and how to upload code <br>
 
-# What you need to have on hand <br>
- > - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
+<h1 align="center">What you need to have on hand</h1>
+
+> - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
  > - A USB camera (I used the [Logitech C920x HD Webcam](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) although you can use any other USB camera)
  > - A microSD card (you can get one [here](https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS/ref=sr_1_6?crid=38NYM8JJMSNRA&keywords=micro%2Bsd%2Bcard&qid=1650155732&sprefix=micro%2Bsd%2Bcard%2Caps%2C255&sr=8-6&th=1) one although I would recommend getting one that is 64gb)
  > - A Arduino Uno (you can get one [here](https://store.arduino.cc/products/arduino-uno-rev3))
 
-# Getting started
+<h1 align="center">Getting Started</h1>
+
 ### Setting up the Jetson Nano
 >During this stage you will add a SWAP file, setup a docker container for the Jetson nano, and finnaly log into the docker and open Jupyter labs
 
@@ -80,11 +83,12 @@ Step 5. Log into Jupyter Labs
 
 ![image](https://user-images.githubusercontent.com/92825997/163696076-2bb063ed-7d28-462a-8a77-121c0170d2a9.png)
 
-# Running the default image recognition program
+<h1 align="center">Running the default image recognition program</h1>
 
-# Making edits to the program
+<h1 align="center">Making edits to the program</h1>
 
-# Including the Arduino board (Without the Jetson)
+<h1 align="cetner">Including the Arduino board (Without the Jetson)</h1>
+
 >During this stage you will find out what the Arduino side of the code looks like, find out what the different lines do, and test out the code in the Serial Monitor (we are not using the Jetson yet because it requires a different baud rate which we have to setup later)
 
 Step 1. Open up the file Image-recognition-win21H2 >> test code >> caseswitch.ino and load it to the Arduino IDE
@@ -214,7 +218,8 @@ This code looks similar to the one before right? That is correct although we hav
 
 Once you have uploaded the code to the Arduino board, you can connect the board to the Jetson using the programming cable and get the image recognition program up and running. What you will notice is that when the Prediction score goes above a certain point, the green LED turns on and vice versa!
 
-# Wrap up/conclusion
+<h1 align="center">Wrap up/conclusion</h1>
+
 To conclude this project, you should by now understand how to get a docker container running on a Jetson, get Jupyter labs running, know how to run your first image recognition program, and know how to edit the code so that it works with an Arduino Uno. You will also have learnt what to use with serial communications with a Jetson nano to Arduino Uno program written using case switches.
 
 >If you have any questions regarding what is in this repository, contact me via discord @ 324Hz#4539 or by email @ 1024bitcoins@gmail.com although note that I am not on it always!
