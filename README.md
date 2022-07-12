@@ -1,14 +1,6 @@
 <h1 align="center">Image Recognition<br>With Project Silent Willow</h1>
 
-<p align="center">
-Note: This repository is <b>not</b> finished yet so there <b>will</b> be some bugs and incomplete code files<br>
-Also note: This repository is built on the Jupyter Labs notebook which is provided by the Nvidia developers group</p>
-
-#### TODO
-> - Continue addings the docs for the image recognition program
-
-##### Image recognition description:
->During the first part of this repository, I will take you through how to setup the Nvidia Jetson nano with Jupyter Labs, run a sample camera script to check your camera is functioning, run the sample image recognition program (which comes with the docker), and finnaly finish off with changing the code to use an Arduino Uno.
+>Throughout the repository, you will learn how to setup your Jetson nano to run a Jupyter Labs notebook provided by the Nvidia DLI. You will also learn how to edit the code so that you can make an Arduino respond to data it recieves from the Jetson
 
 ### Chapters <br>
 #### Image recognition <br>
@@ -24,19 +16,19 @@ Also note: This repository is built on the Jupyter Labs notebook which is provid
 <h1 align="center">Prerequisites</h1>
 
  > - Basic understanding of the Ubuntu/Linux CLI and how to enter commands/open files and navigate paths as well as sudo, pip, and sh commands <br>
- > - Understanding of how to use the Arduino IDE and how to upload code <br>
+ > - Understanding of how to use the Arduino IDE and how to upload code as well as basic familiarity of C++ and how to write code for Arduino<br>
 
 <h1 align="center">What you need to have on hand</h1>
 
 > - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
  > - A USB camera (I used the [Logitech C920x HD Webcam](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) although you can use any other USB camera)
  > - A microSD card (you can get one [here](https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS/ref=sr_1_6?crid=38NYM8JJMSNRA&keywords=micro%2Bsd%2Bcard&qid=1650155732&sprefix=micro%2Bsd%2Bcard%2Caps%2C255&sr=8-6&th=1) one although I would recommend getting one that is 64gb)
- > - A Arduino Uno (you can get one [here](https://store.arduino.cc/products/arduino-uno-rev3))
+ > - An Arduino Uno (you can get one [here](https://store.arduino.cc/products/arduino-uno-rev3))
 
 <h1 align="center">Getting Started</h1>
 
 ### Setting up the Jetson Nano
->During this stage you will add a SWAP file, setup a docker container for the Jetson nano, and finnaly log into the docker and open Jupyter labs
+>During this stage you will add a SWAP file, setup a docker container for the Jetson nano, and finnaly log into the docker container and open a notebook in Jupyter Labs
 
 Step 1.  Power up and SSH into the Nano
 
@@ -75,17 +67,19 @@ Step 4. Run the following commands to make the docker container needed to run Ju
     
     
 Step 5. Log into Jupyter Labs
->Description: You use the URL that was provided after running the docker script above. You have to copy and paste it into a browser and use the default password `dlinano` to login. A picture of the provided URL is below (note this URL will NOT be the same for you)
+>Description: You use the URL that was provided after running the docker script above. You have to copy and paste it into a browser and use the default password `dlinano` to login. A picture of the provided URL is below (note this URL will <u>NOT</u> be the same for you)
 
 ![image](https://user-images.githubusercontent.com/92825997/163696048-b2b53b30-eeb3-405a-b0b4-602776c7d8d6.png)
 
->If you see something like the below image, you have setup your Jetson correctly and can head over to the next steps
+>If you see something like the below image, you have setup your Jetson nano correctly and can head over to the next steps
 
 ![image](https://user-images.githubusercontent.com/92825997/163696076-2bb063ed-7d28-462a-8a77-121c0170d2a9.png)
 
 <h1 align="center">Running the default image recognition program</h1>
+INFORMATION TO BE ADDED
 
 <h1 align="center">Making edits to the program</h1>
+INFORMATION TO BE ADDED
 
 <h1 align="cetner">Including the Arduino board (Without the Jetson)</h1>
 
