@@ -5,7 +5,7 @@
 ### Chapters <br>
 #### Image recognition <br>
 >1 - Prerequisites<br>
->2 - What you need to have on hand<br>
+>2 - What you need to have<br>
 >3 - Getting started<br>
 >4 - Running the default image recognition program<br>
 >5 - Making edits to the program<br>
@@ -17,13 +17,14 @@
 
  > - Basic understanding of the Ubuntu/Linux CLI and how to enter commands/open files and navigate paths as well as sudo, pip, and sh commands <br>
  > - Understanding of how to use the Arduino IDE and how to upload code as well as basic familiarity of C++ and how to write code for Arduino<br>
+ > - <u>Languages used include Python and C++</u>
 
-<h1 align="center">What you need to have on hand</h1>
+<h1 align="center">What you need to have</h1>
 
-> - A Nvidia Jetson Nano board (you can get one [here](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
- > - A USB camera (I used the [Logitech C920x HD Webcam](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) although you can use any other USB camera)
- > - A microSD card (you can get one [here](https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS/ref=sr_1_6?crid=38NYM8JJMSNRA&keywords=micro%2Bsd%2Bcard&qid=1650155732&sprefix=micro%2Bsd%2Bcard%2Caps%2C255&sr=8-6&th=1) one although I would recommend getting one that is 64gb)
- > - An Arduino Uno (you can get one [here](https://store.arduino.cc/products/arduino-uno-rev3))
+> - A Nvidia Jetson Nano board (you can get one [<u>here</u>](https://www.amazon.com/NVIDIA-Jetson-Nano-Developer-945-13541-0000-000/dp/B08J157LHH/ref=sr_1_3?crid=14OGE6DXXIQJV&keywords=nvidia+jetson+nano+2gb&qid=1650155641&sprefix=nvidia+jetson+nano+%2Caps%2C212&sr=8-3) although keep in mind that as of now they might not be in stock) <br>
+ > - A USB camera (I used the [<u>Logitech C920x HD Webcam</u>](https://www.amazon.com/Logitech-C920x-Pro-HD-Webcam/dp/B085TFF7M1/ref=sr_1_3?crid=27NQO1U637C2M&keywords=logitech%2Busb%2Bcamera&qid=1650155485&sprefix=logitech%2Busb%2Bcamera%2Caps%2C160&sr=8-3&th=1) for this project although you can use a different USB camera)
+ > - A microSD card (you can get one [<u>here</u>](https://www.amazon.com/SanDisk-Ultra-UHS-I-Memory-Adapter/dp/B00M55C0NS/ref=sr_1_6?crid=38NYM8JJMSNRA&keywords=micro%2Bsd%2Bcard&qid=1650155732&sprefix=micro%2Bsd%2Bcard%2Caps%2C255&sr=8-6&th=1) one although I would recommend getting one that is 64gb)
+ > - An Arduino Uno (you can get one [<u>here</u>](https://store.arduino.cc/products/arduino-uno-rev3))
 
 <h1 align="center">Getting Started</h1>
 
@@ -38,7 +39,7 @@ Step 2. Run the below command to check how much memory you have on the Jetson
     free -m
 
 
-Step 3. Run the following commands ONLY if your Jetson does not already have a SWAP file
+Step 3. Run the following commands <u>ONLY</u> if your Jetson does not already have a SWAP file
 >Description: The commands below will create the virtual RAM needed for the program to run normally
 
     sudo systemctl disable nvzramconfig
@@ -67,7 +68,7 @@ Step 4. Run the following commands to make the docker container needed to run Ju
     
     
 Step 5. Log into Jupyter Labs
->Description: You use the URL that was provided after running the docker script above. You have to copy and paste it into a browser and use the default password `dlinano` to login. A picture of the provided URL is below (note this URL will <u>NOT</u> be the same for you)
+>Description: You use the URL that was provided after running the docker script above. You have to copy and paste it into a browser and use the default password `dlinano` to login. A picture of the provided URL is below (note the IP shown will <u>NOT</u> be the same for you)
 
 ![image](https://user-images.githubusercontent.com/92825997/163696048-b2b53b30-eeb3-405a-b0b4-602776c7d8d6.png)
 
